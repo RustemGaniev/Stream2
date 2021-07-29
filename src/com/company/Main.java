@@ -1,9 +1,6 @@
 package com.company;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -11,6 +8,8 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) {
+
+
 
         List<String> names = Arrays.asList("Jack", "Connor", "Harry", "George", "Samuel", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Brown");
@@ -38,25 +37,13 @@ public class Main {
                    .map(p -> p.getFamily())
                    .collect(Collectors.toList());
 
-          
 
-           List<String> workingMen = persons.stream()
+           persons.stream()
                    .filter(p -> p.getEducation() == Education.HIGHER)
                    .filter(p -> p.getAge() > 17)
-                   .filter(p -> p.getAge() < 66)
-                   .filter(p -> p.getSex() == Sex.MAN)
-                   .map(p -> p.getFamily())
+                   .filter(p -> (p.getSex() == Sex.MAN && p.getAge() < 66) || (p.getSex() == Sex.WOMAN && p.getAge() <61))
                    .collect(Collectors.toList());
 
-           List<String> workingWomen = persons.stream()
-                   .filter(p -> p.getEducation() == Education.HIGHER)
-                   .filter(p -> p.getAge() > 17)
-                   .filter(p -> p.getAge() < 61)
-                   .filter(p -> p.getSex() == Sex.WOMAN)
-                   .map(p -> p.getFamily())
-                   .collect(Collectors.toList());
-
-           workingMen.addAll(workingWomen);
 
 
 
