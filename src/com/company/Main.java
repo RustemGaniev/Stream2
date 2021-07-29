@@ -42,7 +42,9 @@ public class Main {
                    .filter(p -> p.getEducation() == Education.HIGHER)
                    .filter(p -> p.getAge() > 17)
                    .filter(p -> (p.getSex() == Sex.MAN && p.getAge() < 66) || (p.getSex() == Sex.WOMAN && p.getAge() <61))
+                   .sorted(Comparator.comparing(Person::getFamily))
                    .collect(Collectors.toList());
+
 
 
 
